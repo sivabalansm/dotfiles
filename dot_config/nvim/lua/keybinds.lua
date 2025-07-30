@@ -25,7 +25,7 @@ vim.keymap.set("n", "<Leader>'", ":vsplit ")
 vim.keymap.set("n", '<Leader>"', ":split ")
 
 -- Set Filetype via user input
-vim.keymap.set("n", "<Leader>f", function() vim.ui.input({ prompt = 'Filetype: ' }, function(input) vim.o.filetype = input end) end)
+vim.keymap.set("n", "<Leader>F", function() vim.ui.input({ prompt = 'Filetype: ' }, function(input) vim.o.filetype = input end) end)
 
 -- Save
 vim.keymap.set("n", "zz", ":update<CR>")

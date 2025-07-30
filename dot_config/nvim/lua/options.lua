@@ -3,7 +3,10 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
+vim.o.expandtab = true
 vim.o.timeout = false -- to make timeouts for the leaker key infinite
+vim.o.filetype = "on"
+vim.cmd([[filetype plugin on]])
 
 -- Set legacy default colorscheme (changed in neovim version 0.10 and above)
 vim.cmd([[colorscheme vim]])
