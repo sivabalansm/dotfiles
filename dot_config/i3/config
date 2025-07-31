@@ -1,0 +1,220 @@
+# setting font 
+font pango:monospace 10
+
+# gaps
+for_window [class=".*"] border pixel 3
+gaps inner 5
+gaps outer 5
+
+# set border color
+# class			border	backgr.	text	indicator	child_border
+client.focused          #f5efee	#f5efee	#000000	#ffffff		#ffffff
+client.unfocused	#133456 #5f676a #ffffff #484e50		#000000
+client.focused_inactive #333333 #5f676a #ffffff #484e50		#5f676a
+
+# set i3 bar
+bar {
+	position top
+        status_command i3status
+	separator_symbol " | "
+	font pango:SFNS Display 13
+}
+
+# set main modifier key
+set $mod Mod1
+set $win Mod4
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+t exec st
+
+# kill focused window
+bindsym $mod+q kill
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+
+# change window focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# use the cursor keys to change focus:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# use the cursor keys to move the focused window:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal(column) orientation
+bindsym $mod+c split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+	bindsym q mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+
+
+
+
+# resize mode
+bindsym $mod+r mode "resize"
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating / remove scratchpad
+bindsym $mod+Shift+w floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# create scratchpad
+bindsym $mod+w move scratchpad
+
+# show scratchpad
+bindsym $mod+s scratchpad show 
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# disable focus follows mouse
+focus_follows_mouse no
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Computer power options
+bindsym $mod+Shift+q exec $HOME/sc/.sys/power.sh
+
+# Transfer clipboard
+bindsym $mod+Shift+t exec xclip -sel primary -o | xclip -sel clipboard
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+z exec [ $(echo -e "Yes\nNo" | dmenu -i -p "Do you want to exit i3wm") = "Yes" ] && i3-msg exit
+
+# temporary lock on computer
+bindsym $mod+Shift+x exec i3lock --color 000000 && xset dpms force off
+#2f343f
+
+# pulse audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% # increase sound volume bindsym 
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% # decrease sound volume bindsym 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# playerctl controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# screen brightness controls
+# increase screen brightness
+bindsym XF86MonBrightnessUp exec $HOME/.local/bin/inc --increment=5 /sys/class/backlight/amdgpu_bl1/brightness
+# decrease screen brightness
+bindsym XF86MonBrightnessDown exec $HOME/.local/bin/inc --decrement=5 /sys/class/backlight/amdgpu_bl1/brightness
+
+
+# keys to mouse
+set $speed 16
+bindsym $win+y exec xdotool mousemove_relative -- -$speed 0
+bindsym $win+u exec xdotool mousemove_relative 0 $speed 
+bindsym $win+i exec xdotool mousemove_relative 0 -$speed 
+bindsym $win+o exec xdotool mousemove_relative $speed 0
+bindsym $win+7 exec xdotool click 1
+bindsym $win+8 exec xdotool click 3
+bindsym $win+Shift+u exec xdotool click --repeat 3 5
+bindsym $win+Shift+i exec xdotool click --repeat 3 4
+bindsym $win+Shift+o exec xdotool mousemove 7680 0
+
+# keys to shortcut arrow keys
+bindsym --release $win+h exec --no-startup-id xdotool key Left
+bindsym --release $win+j exec --no-startup-id xdotool key Down
+bindsym --release $win+k exec --no-startup-id xdotool key Up
+bindsym --release $win+l exec --no-startup-id xdotool key Right
+
+# start notification server
+exec_always dunst &
+
+# close notifications
+bindsym $mod+p exec dunstctl close
+bindsym $mod+Shift+p exec dunstctl close-all
+
+# screenshot
+bindsym --release $mod+Shift+s exec --no-startup-id $HOME/sc/.sys/sshot.sh
+
+# OCR shot
+bindsym --release $mod+Shift+t exec --no-startup-id $HOME/sc/.sys/tshot.sh
+
+# open prefered browser
+bindsym $mod+b exec firefox
+bindsym $mod+Shift+b exec firefox --private-window 
+
+# switch keyboard layout
+# /etc/X11/xorg.conf.d/00-keyboard.conf --> localectl --no-convert set-x11-keymap us,ca pc105 ,fr-legacy grp:caps_toggle
+
+# set prefered wallpaper
+exec_always xwallpaper --maximize $HOME/pic/wall/derp.png
+
+# set proper scaling of screen
+exec xrandr --output eDP-1 --scale 0.8x0.8
