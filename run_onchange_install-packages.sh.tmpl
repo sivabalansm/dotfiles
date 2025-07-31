@@ -1,6 +1,28 @@
 {{ if eq .chezmoi.osRelease.name "Arch Linux" -}}
 #!/bin/bash
 echo "Installing packages required for dotfiles"
-sudo pacman -S nvim htop ripgrep tmux dunst
+sudo pacman --needed -S nvim htop ripgrep tmux dunst dmenu git
+
+# ST Installation
+echo "Installing st"
+stLocation="$HOME/sc/st"
+stGitLocation="$stLocation/.git"
+if [ ! -d "$stLocation" ]
+then
+        echo "$stLocation folder does not exist, starting clean install of st"
+        mkdir -p "$stLocation"
+        [ ! -d "$stGitLocation" ] && git clone https://github.com/sivabalansm/st $HOME/sc/st
+else
+        echo "$stLocation exists, assuming st is installed"
+fi
+if [ ! -e "/usr/local/bin/st" -a -d "$stGitLocation" ]
+then
+        echo "Cannot find st binary at $stLocation, installing from source..."
+        (cd "$HOME/sc/st"; sudo make clean install)
+else
+        [ -e "/usr/local/bin/st" ] && echo "St binary exists, skipping install"
+        [ ! -d "$stGitLocation" ] && echo "$stGitLocation not found, skipping install"
+fi
+
 {{ end -}}
 
