@@ -1,8 +1,12 @@
 -- load custom keybinds
 require("plugin.keybind.lsp")
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- setup python LSP
-require("lspconfig").pyright.setup{}
+require("lspconfig").pyright.setup({
+    capabilities = capabilities,
+})
 
 -- setup C and C++ LSP
 require("lspconfig").ccls.setup{}

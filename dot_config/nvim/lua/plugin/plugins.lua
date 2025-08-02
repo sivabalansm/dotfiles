@@ -24,7 +24,18 @@ return {
                     require("plugin.keybind.telescope")
             end,
         },
-	
+        { "hrsh7th/nvim-cmp",
+            dependencies = { 
+               'neovim/nvim-lspconfig',
+               'hrsh7th/cmp-nvim-lsp',
+               'hrsh7th/cmp-buffer',
+               'hrsh7th/cmp-path',
+               'hrsh7th/cmp-cmdline',
+            },
+            config = function()
+                    require("plugin.config.cmp")
+            end,
+        },
 --  	{ "nvim-treesitter/nvim-treesitter",
 --  	   config = function()
 --  		   require("nvim-treesitter.configs").setup(require("plugin.config.treesitter"))
