@@ -4,7 +4,7 @@ return {
 		  require("plugin.config.lsp")
 	  end,
 	},
-	{ "williamboman/mason.nvim",
+	{ "mason-org/mason.nvim",
             keys = {
 		    { "<Leader>m", ":Mason<CR>", desc = "Toggle Mason" },
 	    },
@@ -12,11 +12,17 @@ return {
 		    require("mason").setup()
 	    end,
     	},
-	{ "williamboman/mason-lspconfig.nvim",
-	    config = function() 
-		    require("mason-lspconfig").setup()
-	    end,
-	},
+	{ "mason-org/mason-lspconfig.nvim",
+          dependencies = {
+                  { "mason-org/mason.nvim", opts = {} },
+                  "neovim/nvim-lspconfig",
+          },
+          config = function()
+                  require("mason-lspconfig").setup {
+                          automatic_enable = true
+                  }
+          end,
+        },
         { "nvim-telescope/telescope.nvim",
             tag = "0.1.8",
             dependencies = { "nvim-lua/plenary.nvim" },
