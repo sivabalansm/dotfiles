@@ -1,6 +1,6 @@
 return {
 	{ "neovim/nvim-lspconfig",
-	  config = function() 
+	  config = function()
 		  require("plugin.config.lsp")
 	  end,
 	},
@@ -8,7 +8,7 @@ return {
             keys = {
 		    { "<Leader>m", ":Mason<CR>", desc = "Toggle Mason" },
 	    },
-	    config = function() 
+	    config = function()
 		    require("mason").setup()
 	    end,
     	},
@@ -19,7 +19,8 @@ return {
           },
           config = function()
                   require("mason-lspconfig").setup {
-                          automatic_enable = true
+                          automatic_enable = true,
+                          ensure_installed = { "lua_ls", "pyright", "cssls", "ts_ls" },
                   }
           end,
         },
@@ -31,7 +32,7 @@ return {
             end,
         },
         { "hrsh7th/nvim-cmp",
-            dependencies = { 
+            dependencies = {
                'neovim/nvim-lspconfig',
                'hrsh7th/cmp-nvim-lsp',
                'hrsh7th/cmp-buffer',

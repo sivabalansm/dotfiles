@@ -1,8 +1,9 @@
 {{ if eq .chezmoi.osRelease.name "Arch Linux" -}}
 #!/bin/bash
 echo "Installing packages required for dotfiles"
-sudo pacman --needed -S nvim htop ripgrep tmux dunst dmenu git keychain scrot
-
+sudo pacman --needed -S nvim htop tmux dunst dmenu keychain scrot
+# nvim plugin dependencies
+sudo pacman --needed -S ripgrep git curl unzip gzip tar node
 # ST Installation
 echo "Installing st"
 stLocation="$HOME/sc/st"
