@@ -37,3 +37,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
                                                 end,                                 opts)
   end,
 })
+
+-- Add rounded corners
+vim.diagnostic.config {
+        virtual_text = false,
+        float = {
+                header = false,
+                border = 'rounded',
+                focusable = true,
+        },
+}

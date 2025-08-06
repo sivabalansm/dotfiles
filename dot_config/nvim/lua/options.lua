@@ -15,10 +15,13 @@ vim.cmd([[colorscheme vim]])
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 
 -- Change Pop up menu color
-vim.api.nvim_set_hl(0, "Pmenu", { ctermfg=2, ctermbg=0 })
+vim.api.nvim_set_hl(0, "Pmenu", {})
 
 -- Completion function default
 vim.o.omnifunc = "syntaxcomplete#Complete"
 
 -- autocomplete windows will be in a popup window instead of preview buffers
 vim.o.completeopt = "menu,popup"
+
+-- Add window borders everywhere
+vim.o.winborder = 'rounded'
