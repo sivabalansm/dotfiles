@@ -21,7 +21,7 @@ return {
           config = function()
                   require("mason-lspconfig").setup {
                           automatic_enable = true,
-                          ensure_installed = { "lua_ls", "pyright", "cssls", "ts_ls" },
+                          ensure_installed = { "lua_ls", "pyright", "cssls", "ts_ls", "clangd" },
                   }
           end,
         },
