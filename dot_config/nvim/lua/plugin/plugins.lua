@@ -1,3 +1,4 @@
+local leet_arg = "leetcode.nvim"
 return {
 	{ "neovim/nvim-lspconfig",
 	  config = function()
@@ -55,6 +56,15 @@ return {
                     require("plugin.config.lualine")
             end,
         },
+        { "kawre/leetcode.nvim",
+            dependencies = {
+                    "nvim-lua/plenary.nvim",
+                    "MunifTanjim/nui.nvim",
+                    "nvim-telescope/telescope.nvim"
+            },
+            lazy = leet_arg ~= vim.fn.argv(0, -1),
+            opts = { arg = leet_arg },
+        }
 --  	{ "nvim-treesitter/nvim-treesitter",
 --  	   config = function()
 --  		   require("nvim-treesitter.configs").setup(require("plugin.config.treesitter"))
