@@ -49,19 +49,15 @@ return {
                     require("plugin.config.conform")
             end,
         },
-
+        { 'nvim-lualine/lualine.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons' },
+            config = function()
+                    require("plugin.config.lualine")
+            end,
+        },
 --  	{ "nvim-treesitter/nvim-treesitter",
 --  	   config = function()
 --  		   require("nvim-treesitter.configs").setup(require("plugin.config.treesitter"))
 --  	   end,
 --     	},
---	{ "akinsho/flutter-tools.nvim",
---	   lazy = false,
---	   dependencies = {
---		   "nvim-lua/plenary.nvim",
---	   },
---	   config = function()
---			require("flutter-tools").setup{}
---	   end,
---	},
 }
