@@ -43,6 +43,13 @@ return {
                     require("plugin.config.cmp")
             end,
         },
+        { 'stevearc/conform.nvim',
+            opts = {},
+            config = function()
+                    require("plugin.config.conform")
+            end,
+        },
+
 --  	{ "nvim-treesitter/nvim-treesitter",
 --  	   config = function()
 --  		   require("nvim-treesitter.configs").setup(require("plugin.config.treesitter"))
