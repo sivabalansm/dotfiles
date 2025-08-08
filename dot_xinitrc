@@ -1,0 +1,9 @@
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+# while xprop -root -set WM_NAME "$(date)"
+# do
+# 	sleep 1
+# done &
+slstatus &
+(sleep 5 ; $HOME/sc/.sys/autostart.sh) &
+exec dwm
+#exec i3
