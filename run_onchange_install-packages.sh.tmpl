@@ -5,25 +5,33 @@ sudo pacman --needed -S nvim htop tmux dunst dmenu keychain scrot
 # nvim plugin dependencies
 sudo pacman --needed -S ripgrep git curl unzip gzip tar nodejs
 # ST Installation
-echo "Installing st"
-stLocation="$HOME/sc/st"
-stGitLocation="$stLocation/.git"
-if [ ! -d "$stLocation" ]
-then
-        echo "$stLocation folder does not exist, starting clean install of st"
-        mkdir -p "$stLocation"
-        [ ! -d "$stGitLocation" ] && git clone https://github.com/sivabalansm/st $HOME/sc/st
-else
-        echo "$stLocation exists, assuming st is installed"
-fi
-if [ ! -e "/usr/local/bin/st" -a -d "$stGitLocation" ]
-then
-        echo "Cannot find st binary at $stLocation, installing from source..."
-        (cd "$HOME/sc/st"; sudo make clean install)
-else
-        [ -e "/usr/local/bin/st" ] && echo "St binary exists, skipping install"
-        [ ! -d "$stGitLocation" ] && echo "$stGitLocation not found, skipping install"
-fi
+function sucklessInstaller {
+        local sucklessProgram="$1"
+        echo "Installing $sucklessProgram"
+        spLocation="$HOME/sc/$sucklessProgram"
+        spGitLocation="$spLocation/.git"
+        spBinLocation="/usr/local/bin/$sucklessProgram"
+
+        if [ ! -d "$spLocation" ]
+        then
+                echo "$spLocation folder does not exist, starting clean install of $sucklessProgram"
+                mkdir -p "$spLocation"
+                [ ! -d "$spGitLocation" ] && git clone "https://github.com/sivabalansm/$sucklessProgram" $spLocation
+        else
+                echo "$spLocation exists, assuming $sucklessProgram is installed"
+        fi
+        if [ ! -e "$spBinLocation" -a -d "$spGitLocation" ]
+        then
+                echo "Cannot find $sucklessProgram binary at $spLocation, installing from source..."
+                (cd "$spLocation"; sudo make clean install)
+        else
+                [ -e "$spBinLocation" ] && echo "$sucklessProgram binary exists, skipping compiling from source"
+                [ ! -d "$spGitLocation" ] && echo "$spGitLocation not found, skipping compiling from source"
+        fi
+}
+
+sucklessInstaller "st"
+sucklessInstaller "dwm"
 
 exit 0
 {{ end -}}
