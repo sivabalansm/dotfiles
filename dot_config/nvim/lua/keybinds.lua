@@ -20,6 +20,10 @@ vim.keymap.set("v", "<Leader>c", '"+')
 vim.keymap.set("n", "<Leader>C", '"*')
 vim.keymap.set("v", "<Leader>C", '"*')
 
+-- Move between buffers
+vim.keymap.set("n", "<Leader>n", ":bnext<CR>")
+vim.keymap.set("n", "<Leader>p", ":bprev<CR>")
+
 -- Window splits
 vim.keymap.set("n", "<Leader>'", ":vsplit ")
 vim.keymap.set("n", '<Leader>"', ":split ")
