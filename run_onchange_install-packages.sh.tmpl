@@ -1,7 +1,7 @@
 {{ if eq .chezmoi.osRelease.name "Arch Linux" -}}
 #!/bin/bash
 echo "Installing packages required for dotfiles"
-sudo pacman --needed -S nvim htop tmux dunst dmenu keychain scrot
+sudo pacman --needed -S nvim htop tmux dunst dmenu keychain scrot slock
 # nvim plugin dependencies
 sudo pacman --needed -S ripgrep git curl unzip gzip tar nodejs
 # ST Installation
@@ -33,7 +33,9 @@ function sucklessInstaller {
 sucklessInstaller "st"
 sucklessInstaller "dwm"
 sucklessInstaller "slstatus"
-sucklessInstaller "slock"
+
+echo "Installing optional utilies"
+sudo pacman --needed -S discord
 
 exit 0
 {{ end -}}

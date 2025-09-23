@@ -7,9 +7,13 @@ require('lualine').setup({
                 theme = custom_16colors,
         },
         sections = {
-                lualine_a = {
+                lualine_c = {
                         {
                                 'buffers',
+                                buffers_color = {
+                                        active = { fg = '#000000', bg = '#ffff00' },
+                                        inactive = 'lualine_c_inactive',
+                                },
                         }
                 }
         }
