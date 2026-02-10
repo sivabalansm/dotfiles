@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.name "Arch Linux" -}}
 #!/bin/bash
 echo "Installing packages required for dotfiles"
@@ -38,5 +39,6 @@ echo "Installing optional utilies"
 sudo pacman --needed -S discord
 
 exit 0
+{{ end -}}
 {{ end -}}
 
