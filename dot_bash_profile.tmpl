@@ -1,0 +1,27 @@
+#
+# ~/.bash_profile
+#
+which keychain > /dev/null 2>&1 && eval `keychain --noask -q --eval id_rsa`
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+
+{{ if eq .chezmoi.os "darwin" }} 
+# Work config
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+{{ else if eq .chezmoi.os "linux" }}
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+	exec startx
+fi
+
+{{ else }}
+# No os detected
+
+{{ end }}
+
+
+

@@ -45,6 +45,7 @@ export EDITOR="nvim"
 export PATH="$PATH:$HOME/.local/bin"
 export TERM="xterm-256color"
 export _JAVA_AWT_WM_NONREPARENTING=1 # For java programs to work with dwm
+export BASH_SILENCE_DEPRECATION_WARNING=1 # MacOS bash warning
 
 # bash prompt format and color
 export PS1="[\[\e[1;32m\]\u\[\e[m\]\[\e[1;32m\]@\[\e[m\]\[\e[1;32m\]\h\[\e[m\] \[\e[1;34m\]\W\[\e[m\]]\\$ "

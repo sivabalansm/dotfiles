@@ -1,9 +1,0 @@
-#
-# ~/.bash_profile
-#
-which keychain > /dev/null 2>&1 && eval `keychain --noask -q --eval id_rsa`
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-	exec startx
-fi
-
