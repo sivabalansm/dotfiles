@@ -1,1 +1,7 @@
 .config/i3*
+
+{{- if eq .chezmoi.os "darwin" }}
+.xinitrc
+.Xresources
+sc/.sys
+{{- end }}
