@@ -4,9 +4,12 @@ alias v="nvim"
 alias t="tmux"
 alias ta="tmux attach"
 
+{{ if eq .chezmoi.os "darwin" }}
 alias c="claude"
 alias cc="claude --continue"
 alias cc="claude --resume"
+
+{{ end }}
 
 # Modify path to have local binaries
 set -gx PATH $HOME/.local/bin $PATH
