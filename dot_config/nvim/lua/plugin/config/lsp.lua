@@ -1,6 +1,10 @@
 -- load custom keybinds
 require("plugin.keybind.lsp")
 
+-- Set diagnostic information for lsp
+vim.diagnostic.config({ virtual_text = true })
+
+
 --[[
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
