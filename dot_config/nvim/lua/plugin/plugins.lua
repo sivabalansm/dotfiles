@@ -64,6 +64,11 @@ return {
             },
             lazy = leet_arg ~= vim.fn.argv(0, -1),
             opts = { arg = leet_arg },
+        },
+        {
+          'mrcjkb/rustaceanvim',
+          version = '^8', -- Recommended
+          lazy = false, -- This plugin is already lazy
         }
 --  	{ "nvim-treesitter/nvim-treesitter",
 --  	   config = function()
