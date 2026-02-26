@@ -23,6 +23,7 @@ alias zt='zathura'
 alias lo='libreoffice'
 alias xp='xournalpp'
 alias v='nvim'
+alias vf="nvim -c \"Telescope find_files\""
 alias t='tmux'
 alias ta='tmux attach'
 alias c='clear'
