@@ -1,5 +1,7 @@
 # Alias
 alias l="ls"
+alias la="ls -a"
+alias ll="ls -l"
 alias v="nvim"
 alias vf="nvim -c \"Telescope find_files\""
 alias t="tmux"
@@ -21,3 +23,5 @@ fish_vi_key_bindings
 if status is-interactive
 # Commands to run in interactive sessions can go here
 end
+
+zoxide init fish | source
