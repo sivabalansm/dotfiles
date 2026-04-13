@@ -1,13 +1,14 @@
 # Alias
-alias l="ls"
-alias la="ls -a"
-alias ll="ls -l"
+alias cd=":"
+alias ls=":"
+alias l="/bin/ls --color"
+alias la="/bin/ls --color -a"
+alias ll="/bin/ls --color -l"
 alias v="nvim"
 alias vf="nvim -c \"Telescope find_files\""
 alias t="tmux"
 alias ta="tmux attach"
 
-{{ if eq .chezmoi.os "darwin" }}
 alias c="claude"
 alias cc="claude --continue"
 alias cc="claude --resume"
@@ -16,7 +17,6 @@ alias cldc="claude --allow-dangerously-skip-permissions --continue"
 
 alias oc="opencode"
 alias occ="opencode --continue"
-{{ end }}
 
 # Editor
 set -gx EDITOR nvim
