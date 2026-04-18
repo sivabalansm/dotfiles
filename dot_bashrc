@@ -103,3 +103,4 @@ function fd {
 #infinite history
 HISTZIE=-1
 HISTFILESIZE=-1
+. "$HOME/.cargo/env"
