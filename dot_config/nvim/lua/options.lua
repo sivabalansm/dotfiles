@@ -25,3 +25,10 @@ vim.o.completeopt = "menu,popup"
 
 -- Add window borders everywhere
 vim.o.winborder = 'rounded'
+
+-- Add missing filetype
+vim.filetype.add({
+        extension = {
+                avdl = "avro-idl",
+        },
+})
