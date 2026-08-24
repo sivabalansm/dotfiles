@@ -7,6 +7,17 @@ vim.o.expandtab = true
 vim.o.timeout = false -- to make timeouts for the leaker key infinite
 vim.o.filetype = "on"
 vim.cmd([[filetype plugin on]])
+vim.o.autoread = true
+
+-- After some inactivity, update file in case it changed. Especially by an LLM
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+        pattern = "*",
+        callback = function()
+                if vim.fn.mode() ~= 'c' then
+                        vim.cmd("checktime")
+                end
+        end,
+})
 
 -- Set legacy default colorscheme (changed in neovim version 0.10 and above)
 vim.cmd([[colorscheme vim]])
