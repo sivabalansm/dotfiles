@@ -1,9 +1,5 @@
 #! /bin/bash
 
-function confirm() {
-	[ $(echo -e "Yes\nNo" | dmenu -i -p "Are you sure you want to $1") = "Yes" ]
-}
-
 function has_app {
         local app=$1
         which "$app" 2>&1 > /dev/null
@@ -23,5 +19,5 @@ else
         exit 1
 fi
 
-[ "$answer" = "Shutdown" ] && confirm "shutdown" && shutdown now
-[ "$answer" = "Restart" ] && confirm "restart" && shutdown -r now
+[ "$answer" = "Shutdown" ] && shutdown now
+[ "$answer" = "Restart" ] && shutdown -r now
