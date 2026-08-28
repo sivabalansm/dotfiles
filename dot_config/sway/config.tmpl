@@ -242,10 +242,22 @@ bar {
     #}
 }
 
-{{ if eq .chezmoi.hostname "velup" }}
+# Replace caps lock with escape key
+input "type:keyboard" {
+    xkb_options caps:escape
+}
 
+{{ if eq .chezmoi.hostname "velup" }}
+# Custom monitor setup for home PC
 output VGA-1 mode 1920x1080@60Hz pos 0 0
 output DP-1 mode 1920x1080@120Hz pos 1920 0
+
+{{ end }}
+
+{{ if eq .chezmoi.hostname "regaius" }}
+# Add Wifi and Bluetooth applets
+exec nm-applet --indicator
+exec blueman-applet 
 
 {{ end }}
 
