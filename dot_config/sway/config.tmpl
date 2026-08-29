@@ -252,10 +252,10 @@ input "type:keyboard" {
     xkb_options caps:escape
 }
 
-{{ if eq .chezmoi.hostname "velup" }}
+{{ if eq .chezmoi.hostname "relup" }}
 # Custom monitor setup for home PC
-output VGA-1 mode 1920x1080@60Hz pos 0 0
-output DP-1 mode 1920x1080@120Hz pos 1920 0
+output HDMI-A-1 mode 1920x1080@60Hz pos 0 0
+output HDMI-A-2 mode 1920x1080@144.001Hz pos 1920 0
 
 {{ end }}
 
