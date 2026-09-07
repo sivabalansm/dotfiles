@@ -41,5 +41,12 @@ if status is-interactive
 # Commands to run in interactive sessions can go here
 end
 
+# Add !! to fish
+function last_history_item
+    history --max=1
+end
+abbr -a !! --position anywhere --function last_history_item
+
+
 source "$HOME/.cargo/env.fish"
 zoxide init fish | source
