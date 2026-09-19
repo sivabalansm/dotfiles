@@ -1,0 +1,28 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+          "read": {
+                  "*": "allow",
+                  "*.env": "ask",
+                  "*.env.*": "ask"
+          },
+          "external_directory": {
+                  "/tmp/*": "allow",
+                  "$HOME/*": "allow",
+                  "$HOME/.config/*": "ask"
+          },
+          "webfetch": "allow",
+          "websearch": "allow"
+  },
+   "mcp": {
+           "playwright": {
+                   "type": "local",
+                   "command": [
+                           "npx",
+                           "@playwright/mcp@latest"
+                   ],
+                   "enabled": true
+           }
+
+      }
+}
