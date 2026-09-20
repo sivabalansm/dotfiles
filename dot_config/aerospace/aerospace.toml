@@ -9,6 +9,7 @@ persistent-workspaces = []
 # Give normalizations a chance and enable them back.
 enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
+focus-follows-mouse.enabled = true
 
 # Mouse follows focus when focused monitor changes
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -16,7 +17,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [mode.main.binding]
     # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
     alt-t = 'exec-and-forget wezterm'
-    alt-b = 'exec-and-forget firefox'
+    alt-b = 'exec-and-forget zen'
     alt-q = 'close --quit-if-last-window'
 
     # i3 wraps focus by default
