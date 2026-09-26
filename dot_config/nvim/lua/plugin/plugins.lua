@@ -69,10 +69,11 @@ return {
           'mrcjkb/rustaceanvim',
           version = '^8', -- Recommended
           lazy = false, -- This plugin is already lazy
+        },
+        {
+          'nvim-tree/nvim-tree.lua',
+          config = function()
+                  require("plugin.config.nvim-tree")
+          end,
         }
---  	{ "nvim-treesitter/nvim-treesitter",
---  	   config = function()
---  		   require("nvim-treesitter.configs").setup(require("plugin.config.treesitter"))
---  	   end,
---     	},
 }
