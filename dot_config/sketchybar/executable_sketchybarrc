@@ -109,9 +109,16 @@ sketchybar --add item battery right \
 sketchybar --add graph cpu right 50 \
            --set cpu graph.color=0xff9ece6a \
                            graph.fill_color=0x339ece6a \
+                           icon=󰘚 \
                            update_freq=2 \
                            script="$PLUGIN_DIR/cpu.sh"
 
+sketchybar --add graph memory_pressure right 50 \
+           --set memory_pressure graph.color=0xff9ece6a \
+                           graph.fill_color=0x339ece6a \
+                           icon=󰍛 \
+                           update_freq=2 \
+                           script="$PLUGIN_DIR/memory_pressure.sh"
 
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
