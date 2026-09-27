@@ -67,6 +67,7 @@ for sid in 1 2 3 4 5 6 7 8 9 10; do
         background.corner_radius=5 \
         background.height=20 \
         background.drawing=off \
+        icon.drawing=off \
         label="$sid" \
         click_script="aerospace workspace $sid" \
         script="$CONFIG_DIR/plugins/aerospace.sh $sid"
@@ -78,7 +79,8 @@ done
 
 sketchybar --add item chevron left \
            --set chevron icon= label.drawing=off \
-           --add item front_app left \
+
+sketchybar --add item front_app left \
            --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
            --subscribe front_app front_app_switched
 
